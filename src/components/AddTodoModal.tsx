@@ -95,8 +95,8 @@ const AddTodo: React.FC<AddTodoModalProps> = ({ isOpen, onClose, users }) => {
               placeholder="Select Responsible"
               onChange={handleChange}
             >
-              {users.map((user: User) => (
-                <option key={user.email} value={user.name}>
+              {users.map((user: User, idx: number) => (
+                <option key={idx} value={user.name}>
                   {user.name}
                 </option>
               ))}

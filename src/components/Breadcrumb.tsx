@@ -5,28 +5,21 @@ import { User } from "../interfaces";
 
 const Breadcrumb: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [users, setUsers] = useState<User[]>([
-    {
-      name: "Stuart",
-      email: "stuart@wild.coffee",
-    },
-    {
-      name: "David",
-      email: "david@wild.coffee",
-    },
-    {
-      name: "Joan",
-      email: "joan@wild.coffee",
-    },
-  ]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("https://swapi.dev/people");
+        const response = await fetch("https://swapi.dev/api/people");
         const data = await response.json();
+        const todoUsers = data?.results;
+        todoUsers.forEach((singleUser: any) => {
+          const formatedUser = {
+            name: singleUser.name,
+          };
+          setUsers((prevUsers) => [...prevUsers, formatedUser]);
+        });
         setUsers(data.results);
-        data && console.log(data);
       } catch (error) {
         console.log(error);
       }

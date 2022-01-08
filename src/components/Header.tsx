@@ -6,7 +6,7 @@ export default function Header() {
           <div className="row">
             <div className="col-lg-12">
               <p className="text-center top-message">
-                <a href="/">Todo List</a>
+                <a href="/">Altini - TODO Lista</a>
               </p>
             </div>
           </div>
